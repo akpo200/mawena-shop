@@ -9,6 +9,7 @@ import { buildConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import sharp from 'sharp'
 
 // Adaptateurs de base de données
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
@@ -154,6 +155,9 @@ export default buildConfig({
       fileSize: 10 * 1024 * 1024, // 10 MB max
     },
   },
+
+  // ── Optimisation des images à la volée ──
+  sharp,
 
   // ── Routes ──
   routes: {

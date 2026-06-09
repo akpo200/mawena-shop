@@ -54,6 +54,28 @@ function ConfirmationContent() {
 
   const whatsappUrl = `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(shareText)}`
 
+  const [countdown, setCountdown] = useState(3)
+  const [isRedirected, setIsRedirected] = useState(false)
+
+  // Redirection automatique vers WhatsApp après 3 secondes
+  useEffect(() => {
+    if (orderNumber === 'N/A' || isRedirected) return
+
+    const timer = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          clearInterval(timer)
+          setIsRedirected(true)
+          window.location.href = whatsappUrl
+          return 0
+        }
+        return prev - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [whatsappUrl, orderNumber, isRedirected])
+
   return (
     <div className={styles.page}>
       <div style={{ height: 'var(--nav-height)' }} />
@@ -108,9 +130,15 @@ function ConfirmationContent() {
 
             {/* Redirection WhatsApp automatique/manuelle */}
             <div style={{ margin: '2rem 0', textAlign: 'center' }}>
-              <p style={{ fontSize: '0.95rem', marginBottom: '1rem', color: 'var(--brown-light)' }}>
-                ⚠️ <strong>Important :</strong> Confirmez votre commande en un clic sur WhatsApp pour une livraison plus rapide !
-              </p>
+              {countdown > 0 ? (
+                <p style={{ fontSize: '0.95rem', marginBottom: '1rem', color: 'var(--brown-light)', animation: 'pulse 1s infinite' }}>
+                  📲 Redirection automatique vers WhatsApp pour valider la commande dans <strong>{countdown}</strong>s...
+                </p>
+              ) : (
+                <p style={{ fontSize: '0.95rem', marginBottom: '1rem', color: '#25D366', fontWeight: 'bold' }}>
+                  ✅ Redirection en cours... Si rien ne se passe, clique sur le bouton ci-dessous.
+                </p>
+              )}
               <a
                 href={whatsappUrl}
                 target="_blank"
