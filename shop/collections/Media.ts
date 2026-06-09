@@ -24,8 +24,6 @@ export const Media: CollectionConfig = {
   upload: {
     // Répertoire physique de stockage : public/media (servi statiquement par Next.js)
     staticDir: path.resolve(dirname, '../public/media'),
-    // URL publique correspondante
-    staticURL: '/media',
     // Types de fichiers autorisés (images seulement)
     mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
     // Générer des versions redimensionnées automatiquement

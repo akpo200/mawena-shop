@@ -88,7 +88,7 @@ const storagePlugins = cloudinaryAdapter
       cloudStoragePlugin({
         collections: {
           media: {
-            adapter: cloudinaryAdapter as any,
+            adapter: () => cloudinaryAdapter as any,
             disablePayloadAccessControl: true, // Accès public aux images
             prefix: 'media',
           },
@@ -133,7 +133,7 @@ export default buildConfig({
   },
 
   // ── Base de données : SQLite en local, PostgreSQL en production ──
-  db: isProduction && process.env.DATABASE_URI?.startsWith('postgresql')
+  db: process.env.DATABASE_URI?.startsWith('postgres')
     ? postgresAdapter({
         pool: {
           connectionString: process.env.DATABASE_URI,
