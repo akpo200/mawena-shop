@@ -1,0 +1,135 @@
+.section {
+  padding: 8rem 0;
+  background-color: var(--cream);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5rem;
+  align-items: center;
+}
+
+.imageBlock {
+  position: relative;
+  width: 100%;
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 4/5;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(44, 24, 16, 0.08);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imageWrapper:hover .image {
+  transform: scale(1.03);
+}
+
+.imageBadge {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 2;
+  background-color: var(--brown);
+  color: var(--cream);
+  padding: 0.4rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  border-radius: 2px;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 2rem;
+}
+
+.tagline {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold-dark);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--brown);
+  line-height: 1.2;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.line {
+  width: 60px;
+  height: 2px;
+  background-color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--brown-light);
+  margin-bottom: 1.5rem;
+}
+
+.subtext {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--brown-light);
+  opacity: 0.85;
+  margin-bottom: 2.5rem;
+}
+
+.ctaArea {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    gap: 3rem;
+  }
+  .textBlock {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 0;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .imageWrapper {
+    aspect-ratio: 1/1;
+  }
+  .textBlock {
+    align-items: center;
+    text-align: center;
+  }
+  .line {
+    margin: 0 auto 2rem auto;
+  }
+}

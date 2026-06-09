@@ -1,0 +1,95 @@
+/* ============================================================
+   ConfirmationPage.module.css
+   ============================================================ */
+
+.page {
+  min-height: 100vh;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5rem;
+}
+
+.card {
+  max-width: 600px;
+  margin: 4rem auto;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 3.5rem 3rem;
+  text-align: center;
+  border: 1px solid var(--sand);
+  box-shadow: 0 8px 40px rgba(44, 24, 16, 0.06);
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.icon {
+  color: var(--gold);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 300;
+  color: var(--brown);
+  margin-bottom: 0.5rem;
+}
+
+.message {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--brown-light);
+  line-height: 1.7;
+  margin: 1.25rem 0;
+}
+
+/* Boîte numéro de commande */
+.orderBox {
+  background: var(--cream-dark);
+  border-radius: 6px;
+  padding: 1.25rem 2rem;
+  margin: 2rem 0;
+  border: 1px solid var(--sand);
+}
+
+.orderLabel {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  margin-bottom: 0.5rem;
+}
+
+.orderNumber {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--gold-dark);
+  font-weight: 600;
+}
+
+.contactInfo {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--brown-light);
+  margin-bottom: 2rem;
+}
+
+.waLink {
+  color: var(--gold-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}

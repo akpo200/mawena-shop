@@ -1,0 +1,357 @@
+/* ============================================================
+   ProductClient.module.css — Styles de la page produit
+   ============================================================ */
+
+.page {
+  min-height: 100vh;
+  background: var(--cream);
+  padding-bottom: 6rem;
+}
+
+/* ── Grille 2 colonnes ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  padding-top: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ── Galerie photos ── */
+.galleryColumn {
+  position: sticky;
+  top: calc(var(--nav-height) + 2rem);
+}
+
+/* Image principale */
+.mainImage {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: var(--cream-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.mainImageInner {
+  position: absolute;
+  inset: 0;
+}
+
+/* Boutons navigation galerie */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: rgba(245, 239, 230, 0.9);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--brown);
+  transition: var(--transition-smooth);
+}
+
+.navBtn:hover {
+  background: var(--white);
+  box-shadow: 0 4px 12px rgba(44, 24, 16, 0.15);
+}
+
+.navBtnPrev { left: 1rem; }
+.navBtnNext { right: 1rem; }
+
+/* Miniatures */
+.thumbnails {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 70px;
+  height: 85px;
+  background: var(--cream-dark);
+  border-radius: 3px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  padding: 0;
+}
+
+.thumb:hover {
+  border-color: var(--gold);
+}
+
+.thumbActive {
+  border-color: var(--gold);
+}
+
+/* Placeholder image */
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sand), var(--cream-dark));
+}
+
+.imagePlaceholder span {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+/* ── Infos produit ── */
+.infoColumn {
+  padding-top: 1rem;
+}
+
+.categoryLabel {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 0.75rem;
+}
+
+.productName {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--brown);
+  margin-bottom: 1rem;
+}
+
+/* Prix */
+.priceSection {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--gold-dark);
+}
+
+.comparePrice {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--brown-light);
+  text-decoration: line-through;
+}
+
+.shortDesc {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--brown-light);
+  line-height: 1.7;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--sand);
+  margin: 1.75rem 0;
+}
+
+/* ── Variantes ── */
+.variantSection {
+  margin-bottom: 1.5rem;
+}
+
+.variantLabel {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  margin-bottom: 0.75rem;
+}
+
+.variants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.variantBtn {
+  padding: 0.5rem 1.1rem;
+  background: var(--white);
+  border: 1.5px solid var(--sand);
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--brown);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.variantBtn:hover {
+  border-color: var(--gold);
+}
+
+.variantSelected {
+  background: var(--brown);
+  border-color: var(--brown);
+  color: var(--cream);
+}
+
+.variantUnavailable {
+  opacity: 0.4;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* ── Statut stock ── */
+.stockStatus {
+  margin-bottom: 1.5rem;
+}
+
+.inStock {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: #2d7a2d;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #2d7a2d;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.outOfStock {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--brown-light);
+}
+
+/* ── Bouton Ajouter au panier ── */
+.addToCartBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1.1rem 2rem;
+  background: var(--brown);
+  color: var(--cream);
+  border: none;
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.addToCartBtn:hover:not(:disabled) {
+  background: var(--gold-dark);
+}
+
+.addToCartBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* État "ajouté" */
+.added {
+  background: var(--gold-dark) !important;
+}
+
+/* ── Infos livraison ── */
+.shipping {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.shippingItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--brown-light);
+}
+
+/* ── Personnalisation ── */
+.customizationSection {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.customizationLabel {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+}
+
+.customizationInput {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--sand);
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--brown);
+  background: var(--white);
+  transition: var(--transition-smooth);
+}
+
+.customizationInput:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.customizationHint {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--terracotta);
+}

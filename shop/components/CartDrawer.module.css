@@ -1,0 +1,282 @@
+/* ============================================================
+   CartDrawer.module.css — Styles du drawer panier
+   ============================================================ */
+
+/* ── Overlay sombre ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 24, 16, 0.5);
+  z-index: 200;
+  backdrop-filter: blur(2px);
+}
+
+/* ── Drawer principal ── */
+.drawer {
+  position: fixed;
+  top: 0; right: 0;
+  width: min(420px, 100vw);
+  height: 100vh;
+  background: var(--cream);
+  z-index: 210;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 30px rgba(44, 24, 16, 0.15);
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid var(--cream-dark);
+  flex-shrink: 0;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brown);
+}
+
+.count {
+  width: 20px; height: 20px;
+  background: var(--gold);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: var(--brown-light);
+  cursor: pointer;
+  padding: 0.4rem;
+  transition: var(--transition-smooth);
+}
+
+.closeBtn:hover {
+  color: var(--brown);
+  transform: rotate(90deg);
+}
+
+/* ── Corps scrollable ── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 1.75rem;
+}
+
+/* ── Panier vide ── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 100%;
+  min-height: 300px;
+  text-align: center;
+  color: var(--brown-light);
+}
+
+.empty p {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--brown-light);
+}
+
+/* ── Liste d'articles ── */
+.items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Article individuel ── */
+.item {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Image produit dans le panier */
+.itemImage {
+  position: relative;
+  width: 80px;
+  height: 100px;
+  flex-shrink: 0;
+  background: var(--cream-dark);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: var(--sand);
+}
+
+/* Info produit */
+.itemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.itemName {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--brown);
+  font-weight: 400;
+}
+
+.itemName:hover {
+  color: var(--gold-dark);
+}
+
+.itemVariant {
+  font-size: 0.75rem;
+  color: var(--brown-light);
+  font-style: italic;
+}
+
+.itemPrice {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gold-dark);
+  margin-top: 0.25rem;
+}
+
+/* ── Contrôles quantité ── */
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.qtyBtn {
+  width: 26px; height: 26px;
+  background: var(--cream-dark);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brown);
+  transition: var(--transition-smooth);
+}
+
+.qtyBtn:hover {
+  background: var(--gold);
+  color: var(--white);
+}
+
+.qtyValue {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--brown);
+  min-width: 20px;
+  text-align: center;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--brown-light);
+  padding: 0.25rem;
+  margin-left: auto;
+  transition: var(--transition-smooth);
+}
+
+.removeBtn:hover {
+  color: #c0392b;
+}
+
+/* ── Footer ── */
+.footer {
+  padding: 1.25rem 1.75rem 1.75rem;
+  flex-shrink: 0;
+  border-top: 1px solid var(--cream-dark);
+}
+
+.divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.subtotal span:first-child {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+}
+
+.totalAmount {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--brown);
+  font-weight: 600;
+}
+
+.shippingNote {
+  font-size: 0.75rem;
+  color: var(--brown-light);
+  margin-bottom: 1.25rem;
+}
+
+.checkoutBtn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  padding: 1rem 2rem;
+}
+
+.continueBtn {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: var(--transition-smooth);
+}
+
+.continueBtn:hover {
+  color: var(--brown);
+}

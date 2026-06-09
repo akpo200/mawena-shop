@@ -1,0 +1,174 @@
+/* ============================================================
+   HeroSection.module.css — Styles du héro
+   ============================================================ */
+
+/* ── Section héro pleine hauteur ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--cream);
+}
+
+/* ── Fond avec motif géométrique africain ── */
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Motif SVG géométrique africain en arrière-plan */
+.heroPattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    /* Motif losanges subtils */
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(201, 169, 110, 0.04) 40px,
+      rgba(201, 169, 110, 0.04) 41px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(201, 169, 110, 0.04) 40px,
+      rgba(201, 169, 110, 0.04) 41px
+    );
+}
+
+/* Gradient qui s'éclaircit vers le bas */
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(245, 239, 230, 0.2) 0%,
+    rgba(245, 239, 230, 0.0) 50%,
+    rgba(245, 239, 230, 0.6) 100%
+  );
+}
+
+/* ── Contenu central ── */
+.heroContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: var(--nav-height) 2rem 2rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* Label de marque au-dessus du titre */
+.brandLabel {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Titre animé ── */
+.heroTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--brown);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3em;
+  margin-bottom: 0;
+  perspective: 800px; /* Pour l'animation 3D des mots */
+}
+
+/* Chaque mot est animé séparément */
+.titleWord {
+  display: inline-block;
+}
+
+/* La mise en italique de "beauté" */
+.heroTitle .titleWord:nth-child(4) {
+  font-style: italic;
+  color: var(--gold-dark);
+}
+
+/* ── Ligne dorée ── */
+.goldLine {
+  width: 80px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 2rem auto;
+  transform-origin: left center;
+}
+
+/* ── Slogan ── */
+.slogan {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  margin-bottom: 2.5rem;
+}
+
+/* ── Groupe de boutons CTA ── */
+.ctaGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Indicateur de scroll ── */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1;
+}
+
+.scrollIndicator span {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+/* ── Responsive mobile ── */
+@media (max-width: 640px) {
+  .heroTitle {
+    font-size: clamp(2.5rem, 11vw, 4rem);
+    gap: 0.2em;
+  }
+
+  .ctaGroup {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ctaGroup a, .ctaGroup button {
+    width: 100%;
+    max-width: 280px;
+  }
+}

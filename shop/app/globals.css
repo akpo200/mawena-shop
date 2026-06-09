@@ -1,0 +1,346 @@
+/* ============================================================
+   globals.css — Design system Mawena
+   Palette : Crème / Or chaud / Terracotta / Brun profond
+   Inspiration : Jacquemus × artisanat africain
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── Variables de couleur Mawena ── */
+:root {
+  /* Palette principale */
+  --cream:        #F5EFE6;   /* Crème ivoire — fond principal */
+  --cream-dark:   #EDE4D8;   /* Crème légèrement foncée */
+  --gold:         #C9A96E;   /* Or chaud — boutons et accents */
+  --gold-light:   #DEC28C;   /* Or clair — hover */
+  --gold-dark:    #A8834A;   /* Or foncé — texte sur fond clair */
+  --brown:        #2C1810;   /* Brun profond — titres */
+  --brown-light:  #4A3020;   /* Brun moyen — textes */
+  --sand:         #E8D5B7;   /* Sable — cartes */
+  --terracotta:   #8B4513;   /* Terracotta — badges, catégories */
+  --white:        #FFFFFF;
+  --black:        #000000;
+  
+  /* Typographie */
+  --font-serif:  'Cormorant Garamond', Georgia, serif;
+  --font-sans:   'DM Sans', system-ui, sans-serif;
+  
+  /* Espacement */
+  --nav-height:  80px;
+  
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset et base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--cream);
+  color: var(--brown);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Typographie globale ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--brown);
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.3rem, 3vw, 2rem); }
+h4 { font-size: 1.25rem; }
+
+p {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--brown-light);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-sans);
+}
+
+/* ── Boutons ── */
+
+/* Bouton primaire — Or doré */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--gold);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effet shimmer doré au hover */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover {
+  background: var(--gold-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(201, 169, 110, 0.35);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+/* Bouton secondaire — Contour */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: var(--brown);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--brown);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  background: var(--brown);
+  color: var(--cream);
+}
+
+/* ── Layout utilities ── */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+/* ── Section spacing ── */
+.section {
+  padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
+  }
+}
+
+/* ── Grille de produits ── */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 640px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* ── Carte produit ── */
+.product-card {
+  background: var(--white);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(44, 24, 16, 0.1);
+}
+
+.product-card-image {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--cream-dark);
+}
+
+.product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover .product-card-image img {
+  transform: scale(1.05);
+}
+
+.product-card-info {
+  padding: 1.25rem;
+}
+
+.product-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--brown);
+  margin-bottom: 0.25rem;
+}
+
+.product-card-price {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gold-dark);
+}
+
+/* ── Badge Out of Stock ── */
+.badge-out-of-stock {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(44, 24, 16, 0.85);
+  color: var(--cream);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Badge Vedette ── */
+.badge-featured {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--gold);
+  color: var(--white);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Divider doré ── */
+.divider-gold {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 1.5rem auto;
+}
+
+/* ── Scrollbar personnalisée ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 3px;
+}
+
+/* ── Animations utilitaires ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Skeleton loader pour les images en chargement */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--cream-dark) 25%,
+    var(--sand) 50%,
+    var(--cream-dark) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ── Overlay de chargement de page ── */
+.page-transition {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* ── Toast notifications ── */
+.Toaster {
+  font-family: var(--font-sans) !important;
+}

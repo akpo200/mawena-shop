@@ -1,0 +1,164 @@
+/* ============================================================
+   CategoriesSection.module.css
+   ============================================================ */
+
+.section {
+  padding: 6rem 0;
+  background: var(--cream);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--brown);
+  margin-bottom: 0.5rem;
+}
+
+/* ── Grille des catégories ── */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .categoriesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* ── Carte catégorie ── */
+.categoryCard {
+  position: relative;
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  text-decoration: none;
+  /* Ombre au hover — via transform */
+  transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
+              box-shadow 0.4s ease;
+}
+
+.categoryCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(44, 24, 16, 0.2);
+}
+
+/* ── Image de fond ── */
+.cardImageWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.categoryCard:hover .cardImage {
+  transform: scale(1.05);
+}
+
+/* Overlay sombre pour la lisibilité du texte */
+.cardImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.1) 0%,
+    rgba(0,0,0,0.6) 100%
+  );
+  z-index: 1;
+}
+
+/* Motif géométrique en overlay */
+.cardPattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.5) 0px,
+    rgba(255,255,255,0.5) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+}
+
+/* Gradient sombre en bas pour lisibilité du texte */
+.categoryCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  z-index: 1;
+}
+
+/* ── Contenu texte ── */
+.cardContent {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem 1.75rem;
+}
+
+.cardEmoji {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.cardTitle {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+.cardDesc {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+/* CTA qui apparaît au hover */
+.cardCta {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.categoryCard:hover .cardCta {
+  opacity: 1;
+  transform: translateY(0);
+}

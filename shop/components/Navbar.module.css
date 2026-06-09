@@ -1,0 +1,211 @@
+/* ============================================================
+   Navbar.module.css — Styles de la navigation principale
+   ============================================================ */
+
+/* ── Conteneur principal ── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  transition: var(--transition-smooth);
+  /* Transparent au départ sur le hero */
+  background: transparent;
+}
+
+/* ── Scrolled : fond crème semi-opaque ── */
+.scrolled {
+  background: rgba(245, 239, 230, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(44, 24, 16, 0.08);
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+/* Le multiply fait disparaître le fond blanc de l'image JPEG sur le fond crème */
+.logoImage {
+  mix-blend-mode: multiply;
+  opacity: 0.95;
+}
+
+/* ── Liens de navigation desktop ── */
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.navLink {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brown);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+/* Underline animé au hover */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* ── Actions côté droit ── */
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ── Bouton panier ── */
+.cartButton {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--brown);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+.cartButton:hover {
+  color: var(--gold);
+  transform: translateY(-1px);
+}
+
+/* Badge nombre d'articles */
+.cartBadge {
+  position: absolute;
+  top: 0; right: 0;
+  width: 18px; height: 18px;
+  background: var(--gold);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 0.6rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Bouton hamburger mobile ── */
+.mobileMenuBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--brown);
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+/* ── Menu mobile (drawer depuis la droite) ── */
+.mobileMenu {
+  position: fixed;
+  top: 0; right: 0;
+  width: min(360px, 90vw);
+  height: 100vh;
+  background: var(--cream);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 0;
+}
+
+.mobileClose {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: var(--brown);
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mobileLogoWrap {
+  margin-bottom: 3rem;
+}
+
+.mobileNavLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.mobileNavLink {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--brown);
+  display: block;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--cream-dark);
+  transition: var(--transition-smooth);
+}
+
+.mobileNavLink:hover {
+  color: var(--gold);
+  padding-left: 0.5rem;
+}
+
+.mobileCartBtn {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+/* ── Overlay sombre ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 24, 16, 0.5);
+  z-index: 150;
+  backdrop-filter: blur(2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none; /* Caché sur mobile, remplacé par le menu hamburger */
+  }
+
+  .mobileMenuBtn {
+    display: flex;
+  }
+
+  .navInner {
+    padding: 0 1.25rem;
+  }
+}
